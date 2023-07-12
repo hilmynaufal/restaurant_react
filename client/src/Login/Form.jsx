@@ -14,7 +14,7 @@ const Form = () => {
 
 
   return (
-    <div className='form'>
+    <div className='bg-black'>
       { currentFrom === "login" ? <Login onFormSwitch = {toggleFrom} /> : <Register onFormSwitch = {toggleFrom}  />}
     </div>
   )
