@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom"
 import { useState } from "react";
 
 import { Navbar, Hero, Contact, About } from './components'
-import { Form } from "./Login";
+import { Form, Test_Login, Test_Register } from "./Login";
 
 const App = () => {
 
@@ -11,6 +11,7 @@ const App = () => {
   return (
     <div>
       <Form />
+      {/* <Test_Register /> */}
     </div>
     
     // <BrowserRouter>
