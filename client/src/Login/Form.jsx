@@ -5,7 +5,7 @@ import '../App.css';
 import Login from './Login';
 import Register from './Register';
 
-const Form = () => {
+const Form = ({setLoginState}) => {
     const [currentFrom, setCurrentFrom] = useState("login");
 
   const toggleFrom = (formName) => {
@@ -15,7 +15,7 @@ const Form = () => {
 
   return (
     <div className='bg-black'>
-      { currentFrom === "login" ? <Login onFormSwitch = {toggleFrom} /> : <Register onFormSwitch = {toggleFrom}  />}
+      { currentFrom === "login" ? <Login onFormSwitch = {toggleFrom} setLoginState={setLoginState} /> : <Register onFormSwitch = {toggleFrom} setLoginState={setLoginState} />}
     </div>
   )
 }

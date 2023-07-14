@@ -1,15 +1,51 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react'
+import { register } from '../services/api';
 
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
-const Register = (props) => {
+const Register = ({setLoginState, onFormSwitch}) => {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
   const [ name, setName ] = useState(''); 
 
-  const handleSubmit = (e) => {
+  const notifyError = (msg) => toast.error(msg, {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  });
+
+  const notifyLoginSuccess = (s) => toast.success(s, {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  });
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email);
+    
+    const result = await register(name, email, password)
+
+    console.log(result)
+    if (result.status === '200') {
+      notifyLoginSuccess(result.msg)
+      console.log('terloginlogin')
+      setLoginState(true)
+      return
+    } else {
+      notifyError(msg)
+    }
   }
 
 
@@ -64,7 +100,7 @@ const Register = (props) => {
                     {" "}
                     Already have an account?{" "}
                     <a
-                        onClick={() => props.onFormSwitch('login')}
+                        onClick={() => onFormSwitch('login')}
                         className="font-medium text-purple-600 hover:underline cursor-pointer"
                     >
                         Sign in
