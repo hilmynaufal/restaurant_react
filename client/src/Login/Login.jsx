@@ -8,6 +8,8 @@ const Login = ({setLoginState, onFormSwitch}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  console.log("test")
+
   const notifyError = (msg) => toast.error(msg, {
     position: "top-center",
     autoClose: 2000,
