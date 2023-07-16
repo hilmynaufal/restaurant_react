@@ -35,15 +35,34 @@ export default function Hero() {
     
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex);
+    
   };
 
   return (
 
-      <div className="max-w-[1400px] h-[780px] w-full m-auto py-16 px-4 
+      <div className="max-w-[2000px] h-[780px] w-full m-auto py-0 px-0 
       relative group">
         <div style={{backgroundImage: `url(${slides[currentIndex].url})`}} 
         className="w-full h-full rounded-2xl bg-center 
         bg-cover duration-500">
+          {/* indicator */}
+        <div className="absolute bottom-10 left-0 right-0 z-[2] mx-[15%] 
+        mb-4 flex list-none justify-center p-0">
+          {slides.map((slide, slideIndex) => (
+            <div key={slideIndex} 
+            onClick={() => goToSlide(slideIndex)} 
+            className="text-2xl cursor-pointer">
+              <RxDotFilled className="mx-[3px] box-content h-[3px] 
+              w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] 
+              border-solid border-transparent bg-white bg-clip-padding 
+              p-0 -indent-[999px] opacity-50 transition-opacity 
+              duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] 
+              motion-reduce:transition-none"
+              />
+            </div>
+          ))}
+        </div>
+
         </div>
         {/* Left Arrow */}
         <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%]
@@ -55,15 +74,8 @@ export default function Hero() {
         right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
           <BsChevronCompactRight onClick={nextSlide} size={30} />
         </div>
-        <div className="flex top-4 justify-center py-2">
-          {slides.map((slide, slideIndex) => (
-            <div key={slideIndex} 
-            onClick={() => goToSlide(slideIndex)} 
-            className="text-2xl cursor-pointer">
-              <RxDotFilled />
-            </div>
-          ))}
-        </div>
+
+        
 
       </div>
 
