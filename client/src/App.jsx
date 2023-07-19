@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Navigasibar, Hero, Contact, About } from './components'
 import { Form,} from "./Login";
 import { Dashboard } from "./components/Dashboard";
+import { Reservasi } from "./components/Reservasi";
 
 const App = () => {
 
@@ -27,13 +28,15 @@ const App = () => {
     //     />
     //   {loginState ? <Dashboard/> : <Form setLoginState={setLoginState} />}
     // </div>
-    
+    <div className="bg-gray-200 h-screen">
+      <Reservasi/>
+    </div>
     // <BrowserRouter>
     //   <div>
-        <div>
-        <Navigasibar />
-        <Hero />
-        </div>
+        // <div>
+        // <Navigasibar />
+        // <Hero />
+        // </div>
     //     <About />
     //     <Contact />
     //   </div>
