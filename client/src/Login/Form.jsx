@@ -5,7 +5,7 @@ import '../App.css';
 import Login from './Login';
 import Register from './Register';
 
-const Form = ({setLoginState}) => {
+const Form = ({setLoginState, setUsername}) => {
     const [currentFrom, setCurrentFrom] = useState("login");
 
   const toggleFrom = (formName) => {
@@ -14,8 +14,10 @@ const Form = ({setLoginState}) => {
 
 
   return (
-    <div className='bg-black'>
-      { currentFrom === "login" ? <Login onFormSwitch = {toggleFrom} setLoginState={setLoginState} /> : <Register onFormSwitch = {toggleFrom} setLoginState={setLoginState} />}
+    <div className='bg-[url(https://e0.pxfuel.com/wallpapers/61/374/desktop-wallpaper-big-burger-burger-fries-fast-food.jpg)]'>
+      <div className='w-full h-full backdrop-blur-sm bg-black/40'>
+      { currentFrom === "login" ? <Login setUsername={setUsername} onFormSwitch = {toggleFrom} setLoginState={setLoginState} /> : <Register onFormSwitch = {toggleFrom} setLoginState={setLoginState} />}
+      </div>
     </div>
   )
 }

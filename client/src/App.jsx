@@ -1,42 +1,42 @@
-import { BrowserRouter } from "react-router-dom"
 
-import { useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
+import { createContext, useState } from "react";
+import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-import { Navigasibar, Hero, Contact, About } from './components'
-import { Form,} from "./Login";
+import { Form, } from "./Login";
 import { Dashboard } from "./components/Dashboard";
-import { Reservasi } from "./components/Reservasi";
 
 const App = () => {
 
-  const [loginState, setLoginState] = useState();
-
+  const [loginState, setLoginState] = useState()
+  const [username, setUsername] = useState('')
+  
   return (
-    // <div>
-    //   <ToastContainer
-    //       position="top-center"
-    //       autoClose={2000}
-    //       hideProgressBar={false}
-    //       newestOnTop={false}
-    //       closeOnClick
-    //       rtl={false}
-    //       pauseOnFocusLoss={false}
-    //       draggable={false}
-    //       pauseOnHover
-    //       theme="light"
-    //     />
-    //   {loginState ? <Dashboard/> : <Form setLoginState={setLoginState} />}
+    <UserContext.Provider value={{username, setUsername, setLoginState}}>
+      <div className="bg-white">
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable={false}
+          pauseOnHover
+          theme="light"
+        />
+        {loginState ? <Dashboard /> : <Form setUsername={setUsername} setLoginState={setLoginState} />}
+      </div>
+    </UserContext.Provider>
+    // <div className="bg-gray-200 h-screen">
+    //   <Reservasi/>
     // </div>
-    <div className="bg-gray-200 h-screen">
-      <Reservasi/>
-    </div>
     // <BrowserRouter>
     //   <div>
-        // <div>
-        // <Navigasibar />
-        // <Hero />
-        // </div>
+    // <div>
+    // <Navigasibar />
+    // <Hero />
+    // </div>
     //     <About />
     //     <Contact />
     //   </div>
@@ -45,3 +45,4 @@ const App = () => {
 }
 
 export default App
+export const UserContext = createContext();
